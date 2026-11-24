@@ -75,7 +75,7 @@ describe('redesenho do Dashboard', () => {
   it('critérios 10 a 12: erro aparece no campo e na notificação; conteúdo principal permanece', async () => {
     const usuario = userEvent.setup();
     renderizarApp('/', gerarExemplo(hoje));
-    expect(screen.getByRole('group', { name: 'Resumo do mês' })).toBeInTheDocument();
+    expect(screen.getByRole('group', { name: 'Cartões do dashboard' })).toBeInTheDocument();
     expect(screen.getByRole('table', { name: 'Receitas e despesas por mês', hidden: true })).toBeInTheDocument();
     await usuario.type(screen.getByLabelText('Descrição da recorrência'), 'Inválida');
     await usuario.selectOptions(screen.getByLabelText('Categoria da recorrência'), 'Lazer');

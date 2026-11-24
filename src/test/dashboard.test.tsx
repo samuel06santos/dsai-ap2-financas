@@ -240,8 +240,8 @@ describe('dashboard: tela', () => {
     if (!r.ok) throw new Error(r.erro);
     renderizarApp('/', r.valor);
     const lista = screen.getByRole('list', { name: 'Categorias em alerta' });
-    expect(within(lista).getByText('Moradia')).toBeInTheDocument();
-    expect(within(lista).getByText(/Estourado/)).toBeInTheDocument();
+    const moradia = within(lista).getByText('Moradia').closest('li') as HTMLElement;
+    expect(within(moradia).getByText(/Estourado/)).toBeInTheDocument();
     expect(screen.getByRole('link', { name: 'Abrir orçamento' })).toHaveAttribute('href', `/orcamento?mes=${mes}`);
   });
 

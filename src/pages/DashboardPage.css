@@ -68,17 +68,6 @@
   color: var(--cor-texto);
 }
 
-.dashboard__resumo,
-.dashboard__duas-colunas {
-  display: grid;
-  gap: var(--esp-3);
-  grid-template-columns: minmax(0, 1fr);
-}
-
-.dashboard__duas-colunas {
-  gap: var(--esp-4);
-}
-
 .dashboard__texto,
 .dashboard__texto-mudo {
   margin: 0;
@@ -159,25 +148,19 @@
   color: var(--cor-texto-suave);
 }
 
-@media (min-width: 640px) {
-  .dashboard__resumo {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (min-width: 1024px) {
-  .dashboard__resumo {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
-
-  .dashboard__duas-colunas {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
 .dashboard__mes { display: flex; justify-content: flex-start; }
-.dashboard__resumo { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--esp-3); }
-.dashboard__saldo { grid-column: 1 / -1; }
-@media (max-width: 40rem) { .dashboard__resumo { grid-template-columns: 1fr; } }
+.dashboard__acoes { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: var(--esp-2); }
+.dashboard__cartoes { display: grid; grid-template-columns: minmax(0, 1fr); align-items: stretch; gap: var(--esp-4); }
+.dashboard__cartoes > * { min-width: 0; }
+.dashboard__cartao { display: flex; flex-direction: column; gap: var(--esp-2); min-width: 0; border-radius: var(--raio); }
+.dashboard__cartao > .kpi, .dashboard__cartao > .ds-cartao { flex: 1 1 auto; }
+.dashboard__cartao[draggable='true'] { cursor: grab; }
+.dashboard__cartao--editando { padding: var(--esp-2); outline: 1px dashed var(--cor-borda-forte); outline-offset: 4px; }
+.dashboard__cartao--arrastando { opacity: 0.55; }
+.dashboard__cartao--alvo { outline: 2px dashed var(--cor-primaria); outline-offset: 4px; }
+.dashboard__icone-editar { margin-right: var(--esp-1); }
+.dashboard__todos-ocultos { display: flex; flex-direction: column; align-items: center; gap: var(--esp-3); padding: var(--esp-6); border: 1px dashed var(--cor-borda-forte); border-radius: var(--raio); text-align: center; }
+@media (min-width: 1024px) { .dashboard__cartoes { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 .dashboard__passos { display: flex; flex-direction: column; gap: var(--esp-2); align-items: stretch; text-align: left; }
 .dashboard__passos li { display: flex; justify-content: space-between; align-items: center; gap: var(--esp-3); }
 .dashboard__passos li:last-child { justify-content: center; }
